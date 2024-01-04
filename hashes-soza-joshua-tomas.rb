@@ -23,15 +23,25 @@ my_info [:city] = "San Diego"
 # p my_info.length
 
 # Create a custom method called exists that takes the my_info variable and a key as arguments. Return true if the key exists in the hash, otherwise, return false. Use the following method calls to test the functionality.
-def return_true (exists)
-    result{}
-exists.each do |key| 
-    "#{key}" 
-end 
-p exists(my_info, 'name')
+my_info = { 'name' => 'John', 'age' => 30, 'city' => 'New York' }
+def exists (hash, key)
+    if hash.include?(key)
+        true 
+    else 
+        false
+        end
+end    
+      
+# exists.each do |key| 
+#     "#{key}" 
+# end 
+p exists(my_info, :name)
 p exists(my_info, 'enjoys')
 p exists(my_info, 'city')
 
 
-# Create a custom method called numeric that takes the my_info variable and returns a hash with only the key-value pairs where the value is numeric.
+# Create a custom method called numeric that takes the my_info variable and returns a hash with only the key-value pairs where the value is numeric.    
+p my_info.select {|hash, value| value == 30}
 # Remove the key age and its associated value from the my_info variable.
+my_info.delete :age
+p my_info
