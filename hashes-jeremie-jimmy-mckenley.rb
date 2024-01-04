@@ -85,7 +85,11 @@ p my_info
 # Cohort Student Numbers
 
 # Create a variable called learn and assign it to an empty hash using the .new method. (Expected output: {})
+  learn = Hash.new
+  p learn
 # Add the following key-value pairs one at a time to the learn variable: alpha: 20, bravo: 21, charlie: 18, delta: 12, echo: 9, foxtrot: 10
+ learn[:alpha] = 20
+ 
 # Create the code that will iterate through the learn variable and log each key and its corresponding value.
 # Create the code that will iterate through the learn variable and return a hash with only the values that are greater than or equal to 20.
 # Create the code that will iterate through the learn variable and return the sum of all the values. (Expected output: 90)
