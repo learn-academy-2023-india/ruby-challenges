@@ -147,28 +147,75 @@ p laundry.get_info
 p vacuum.get_info
 p dishes.get_info
 
+
 # For the following ColorPalette challenge use initialize and attr_accessor methods in your class.
 
 # As a developer, I can create a class called ColorPalette.
 
-
+# class ColorPalette
+# end
 
 # As a developer, I can create three instances (objects) of class ColorPalette.
 # e.g green = ColorPalette.new
 
+# black = ColorPalette.new
+# white = ColorPalette.new
+# gold = ColorPalette.new
 
 
 # As a developer, I can initialize each instance of the class ColorPalette with three colors.
 # e.g. green = ColorPalette.new('Chartreuse', 'Kelly', 'Seafoam')
 
+class ColorPalette
+    attr_accessor :color1, :color2, :color3
+  
+    def initialize(color1, color2, color3)
+      @color1 = color1
+      @color2 = color2
+      @color3 = color3
+    end
 
+    def set_colors(color1, color2, color3)
+        @color1 = color1
+        @color2 = color2
+        @color3 = color3
+    end
+
+    def get_colors
+        "#{@color1}, #{@color2}, #{@color3}"
+    end
+
+    def all_colors
+        "Color Palette: #{@color1}, #{@color2}, #{@color3}"
+    end
+end
+
+black = ColorPalette.new('Black', 'DarkGray', 'Onyx')
+white = ColorPalette.new('White', 'BrightWhite', 'OffWhite')
+gold = ColorPalette.new('Gold', 'DarkYellow', 'BrightYellow')
 
 # As a developer, I can print the value of each individual color.
 
-
+puts "Black: #{black.get_colors}"
+puts "White: #{white.get_colors}"
+puts "Gold: #{gold.get_colors}"
 
 # As a developer, I can create a method called all_colors that when called will print a sentence telling me the three colors of a given palette.
 
-
+puts "All Colors - Black: #{black.all_colors}"
+puts "All Colors - White: #{white.all_colors}"
+puts "All Colors - Gold: #{gold.all_colors}"
 
 # As a developer, I can change one or more colors of a given palette.
+
+black.set_colors('Charcoal', 'Gray', 'Slate')
+white.set_colors('Ivory', 'Cream', 'Bone')
+gold.set_colors('Goldenrod', 'LightYellow', 'PaleGold')
+
+puts "Updated Black: #{black.get_colors}"
+puts "Updated White: #{white.get_colors}"
+puts "Updated Gold: #{gold.get_colors}"
+
+puts black.all_colors
+puts white.all_colors
+puts gold.all_colors
