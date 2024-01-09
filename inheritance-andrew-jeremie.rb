@@ -27,6 +27,7 @@
         "The animals age is #{@age} years-old and they are #{@alive ? 'alive' : 'dead'}." 
     end
 end
+# "The animals age is 1 years-old and they are alive."
 
 # Hint: Use attr_accessor as well as an initialize method.
 
@@ -39,7 +40,7 @@ class Fish < Animal
 
 # As a developer, I can initialize all of my fish to be cold_blooded. (Yes, there is one fish who is technically fully warm-blooded but we aren't going to talk about that.)
 
-    def initialize(species)
+    def initialize
         super()
         @cold_blooded = true
     end
@@ -60,6 +61,7 @@ class Salmon < Fish
     "I can see that my Salmon is #{@cold_blooded ? 'cold-blooded' : 'warm-blooded'}."
     end
 end
+# "I can see that my Salmon is cold-blooded."
 
 salmon = Salmon.new('Sockeye')
 salmon.age_by_one
@@ -67,13 +69,23 @@ p salmon.return_age_and_if_alive
 p salmon.display_cold_blooded
 
 # As a developer, I can age my Salmon up.
+# As a developer, if my Salmon reaches the ripe old age of 4, I can make it die peacefully after a full and happy life.
+def age_up
+    @alive = false if @age <= 4
+end
 
 
 # As a developer, I can see a message that tells me all of my Salmon's information.
+def salmon_info
+    super + ", This species is #{@species}, which is #{cold_blooded}. "
+end
 
-# As a developer, if my Salmon reaches the ripe old age of 4, I can make it die peacefully after a full and happy life.
+p salmon.salmon_info
 # Hint: You will need a method that changes the status of alive in the initialize method of Animal.
 # As a developer, I can create a Mammal that inherits from Animal.
+
+
+
 # As a developer, I can initialize all of my Mammals to be warm_blooded.
 # As a developer, I can create a Bear that inherits from Mammal.
 # As a developer, I can age my Bear up.
