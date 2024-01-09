@@ -22,7 +22,7 @@ class Animal
     @age += 1
     end
     def dead
-        while @age >= 4
+        if @age >= 0
             @alive = false
         end
     end
@@ -33,6 +33,10 @@ class Fish < Animal
         super(alive, age)
         @cold_blooded = true
     end
+    def up_year
+        super
+        dead if @age >= 4
+    end
 end
 # As a developer, I can initialize all of my fish to be cold_blooded. (Yes, there is one fish who is technically fully warm-blooded but we aren't going to talk about that.)
 # As a developer, I can create a Salmon that inherits from Fish.
@@ -41,27 +45,50 @@ end
 
 class Salmon < Fish
     def initialize (species)
-        super(alive, age)
+        super(true, 0)
         @species = species
     end
+
     def get_info
-        "My #{@name} is a #{@species}, is #{@age} years old, and is cold-blooded"
+        "My #{@name} is a #{@species}, is #{@age} years old, and is #{@alive ? 'alive' : 'dead'}"
     end
 end
 
 bootyfish = Salmon.new('Atlantic')
-bootyfish.new_name('fish ass')
 # As a developer, I can age my Salmon up.
-# As a developer, I can see a message that tells me all of my Salmon's information.
+bootyfish.new_name('fish ass')
 # As a developer, if my Salmon reaches the ripe old age of 4, I can make it die peacefully after a full and happy life.
 # p bootyfish.get_info
 # Hint: You will need a method that changes the status of alive in the initialize method of Animal.
-bootyfish.up_year
-bootyfish.up_year
-bootyfish.up_year
-bootyfish.up_year
-bootyfish.up_year
-p bootyfish
+2.times { bootyfish.up_year }
+
+puts bootyfish.get_info
+# As a developer, I can see a message that tells me all of my Salmon's information.
+
+class Mammal < Animal
+    def initialize (alive, age) 
+        super(alive, age)
+        @warm_blooded = true
+    end
+    def get_info
+        "My #{@name} is a #{@species}, is #{@age} years old, and is #{@alive ? 'alive' : 'dead'}"
+    end
+end
+
+class Bear < Mammal
+    def initialize (species)
+        super(true, 0)
+        @species = species
+    end
+    def up_year
+        super
+        dead if @age >= 20
+    end
+end
+pooh=Bear.new('Grizzly')
+20.times {pooh.up_year}
+p pooh.get_info
+
 # As a developer, I can create a Mammal that inherits from Animal.
 # As a developer, I can initialize all of my Mammals to be warm_blooded.
 # As a developer, I can create a Bear that inherits from Mammal.
@@ -69,6 +96,22 @@ p bootyfish
 # As a developer, I can see a message that tells me all of my Bear's information.
 # As a developer, if my Bear turns 20 years old, I can make it die peacefully after a full and happy life.
 # Hint: You will need a method that changes the status of alive in the initialize method of Animal.
+
+
+
 # As a developer, I can create a Mammal of my choice.
 # As a developer, I can interact with the new Mammal via various methods.
 # As a developer, I can see a message that tells me all of my new Mammal's information.
+
+class Whale < Mammal
+    def initialize (species)
+        super(true, 0)
+        @species = species
+    end
+    def up_year
+        super dead if @age >= 96
+    end
+end
+laboon=Whale.new('Blue Whale')
+95.times {laboon.up_year}
+p pooh.get_info
